@@ -1,17 +1,17 @@
-import React from 'react'
-import Square from './Square'
+import React from 'react';
+import Square from './Square';
 
-const Board = ({ board, handleSquareClick }) => {
+const Board = ({ board, handleSquareClick, winningSquars }) => {
    const renderSquare = (position) => {
+      const isWinningSquare = winningSquars.includes(position);
       return (
          <Square
             value={board[position]}
-            onClick={() => {
-               handleSquareClick(position)
-            }}
+            onClick={() => handleSquareClick(position)}
+            isWinningSquare={isWinningSquare}
          />
-      )
-   }
+      );
+   };
 
    return (
       <div className="board">
@@ -31,7 +31,7 @@ const Board = ({ board, handleSquareClick }) => {
             {renderSquare(8)}
          </div>
       </div>
-   )
-}
+   );
+};
 
-export default Board
+export default Board;
